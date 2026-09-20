@@ -6,16 +6,17 @@
   <meta name="theme-color" content="#11100f">
   <meta name="description" content="Все площадки подкаста — слушать, смотреть и следить за новыми выпусками.">
   <title>Ваш подкаст — все площадки</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ef5b35'/%3E%3Cpath d='M24 20v24M40 16v32M16 28v8M48 25v14M32 24v16' stroke='%23fff9ed' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
     :root {
       color-scheme: dark;
-      --bg: #11100f;
-      --card: rgba(29, 27, 25, .92);
-      --text: #fff9ed;
-      --muted: #aaa49a;
-      --accent: #ef5b35;
-      --line: rgba(255, 249, 237, .11);
+      --bg: #171513;
+      --card: rgba(32, 29, 27, .94);
+      --text: #fff8ec;
+      --muted: #aaa39a;
+      --accent: #ff6749;
+      --accent-deep: #a81731;
+      --line: rgba(255, 248, 236, .1);
     }
 
     * { box-sizing: border-box; }
@@ -31,8 +32,8 @@
       overflow-x: hidden;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 10%, rgba(239, 91, 53, .23), transparent 30rem),
-        radial-gradient(circle at 86% 88%, rgba(255, 187, 61, .13), transparent 28rem),
+        radial-gradient(circle at 8% 7%, rgba(255, 103, 73, .17), transparent 29rem),
+        radial-gradient(circle at 92% 94%, rgba(168, 23, 49, .18), transparent 32rem),
         var(--bg);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
@@ -47,44 +48,45 @@
     }
 
     main {
-      width: min(100%, 520px);
+      width: min(100%, 540px);
       position: relative;
       z-index: 1;
     }
 
     .profile {
-      padding: clamp(22px, 6vw, 34px);
+      padding: clamp(13px, 3vw, 18px) clamp(18px, 5vw, 32px) clamp(24px, 6vw, 34px);
       border: 1px solid var(--line);
-      border-radius: 30px;
+      border-radius: 32px;
       background: var(--card);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, .34);
+      box-shadow: 0 32px 100px rgba(0, 0, 0, .4), inset 0 1px rgba(255,255,255,.025);
       backdrop-filter: blur(18px);
     }
 
     .cover {
       position: relative;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9.25;
       overflow: hidden;
       display: grid;
       place-items: center;
-      margin-bottom: 28px;
-      border-radius: 22px;
+      margin-bottom: 31px;
+      border-radius: 24px;
       background:
         linear-gradient(145deg, rgba(255,255,255,.09), transparent 45%),
-        linear-gradient(135deg, #f36a3d 0%, #d73b32 55%, #7a182b 100%);
+        linear-gradient(135deg, #f7734d 0%, #e54135 50%, #99172f 100%);
+      box-shadow: 0 18px 38px rgba(115, 16, 36, .3);
     }
 
     .cover::before,
     .cover::after {
       content: "";
       position: absolute;
-      inset: -20%;
-      border: 2px solid rgba(255,255,255,.22);
-      border-radius: 44%;
-      transform: rotate(18deg);
+      inset: -30% -18%;
+      border: 2px solid rgba(255,255,255,.2);
+      border-radius: 48%;
+      transform: rotate(14deg);
     }
 
-    .cover::after { inset: 12% -18%; transform: rotate(-12deg); }
+    .cover::after { inset: 16% -22% -29%; transform: rotate(-11deg); opacity: .82; }
 
     .wave {
       position: relative;
@@ -92,15 +94,15 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      height: 90px;
+      height: 88px;
+      filter: drop-shadow(0 8px 14px rgba(78, 12, 19, .36));
     }
 
     .wave span {
       display: block;
       width: 8px;
       border-radius: 99px;
-      background: var(--text);
-      box-shadow: 0 3px 18px rgba(35, 9, 6, .3);
+      background: #fff8ec;
     }
 
     .wave span:nth-child(1), .wave span:nth-child(7) { height: 24%; }
@@ -110,10 +112,10 @@
 
     .eyebrow {
       margin: 0 0 9px;
-      color: var(--accent);
-      font-size: .82rem;
+      color: #ff785c;
+      font-size: .78rem;
       font-weight: 750;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
@@ -125,7 +127,7 @@
     }
 
     .intro {
-      margin: 17px 0 28px;
+      margin: 17px 0 30px;
       color: var(--muted);
       font-size: 1.04rem;
       line-height: 1.55;
@@ -136,7 +138,7 @@
       align-items: center;
       gap: 11px;
       margin: 27px 0 12px;
-      color: #d5d0c8;
+      color: #d9d2ca;
       font-size: .8rem;
       font-weight: 700;
       letter-spacing: .11em;
@@ -155,31 +157,31 @@
     }
 
     .link {
-      min-height: 62px;
+      min-height: 66px;
       display: grid;
-      grid-template-columns: 38px 1fr 24px;
+      grid-template-columns: 42px 1fr 24px;
       align-items: center;
       gap: 13px;
-      padding: 10px 16px 10px 13px;
+      padding: 10px 16px 10px 11px;
       border: 1px solid var(--line);
-      border-radius: 18px;
+      border-radius: 19px;
       color: var(--text);
-      background: rgba(255,255,255,.035);
+      background: linear-gradient(110deg, rgba(255,255,255,.048), rgba(255,255,255,.022));
       text-decoration: none;
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
-    .link:hover { transform: translateY(-2px); border-color: rgba(239,91,53,.55); background: rgba(255,255,255,.065); }
-    .link:focus-visible { outline: 3px solid rgba(239,91,53,.48); outline-offset: 3px; }
+    .link:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--platform, var(--accent)) 58%, transparent); background: rgba(255,255,255,.068); }
+    .link:focus-visible { outline: 3px solid rgba(255,103,73,.48); outline-offset: 3px; }
 
     .icon {
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
-      border-radius: 12px;
-      background: rgba(255,255,255,.08);
-      color: var(--accent);
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--platform, var(--accent)) 18%, transparent);
+      color: var(--platform, var(--accent));
       font-size: .82rem;
       font-weight: 850;
       letter-spacing: -.02em;
@@ -190,7 +192,7 @@
     .arrow { color: var(--muted); font-size: 1.25rem; transition: transform .18s ease; }
     .link:hover .arrow { transform: translateX(3px); color: var(--text); }
 
-    footer { padding: 20px 8px 2px; text-align: center; color: #6f6a63; font-size: .78rem; }
+    footer { padding: 19px 8px 1px; text-align: center; color: #746e67; font-size: .78rem; letter-spacing: .02em; }
 
     .notice {
       position: fixed;
@@ -215,7 +217,7 @@
 
     @media (max-width: 430px) {
       body { padding: 14px 10px; }
-      .profile { border-radius: 24px; }
+      .profile { border-radius: 26px; }
       .cover { border-radius: 18px; margin-bottom: 23px; }
       .link { min-height: 60px; }
     }
@@ -238,26 +240,26 @@
 
       <p class="section-label">Смотреть</p>
       <nav class="links" aria-label="Видеоплощадки подкаста">
-        <a class="link placeholder" href="#" data-name="YouTube">
+        <a class="link placeholder" href="#" data-name="YouTube" style="--platform:#ff5b52">
           <span class="icon" aria-hidden="true">YT</span><span><strong>YouTube</strong><small>Полные видеовыпуски</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="link placeholder" href="#" data-name="VK Видео">
+        <a class="link placeholder" href="#" data-name="VK Видео" style="--platform:#5e9fff">
           <span class="icon" aria-hidden="true">VK</span><span><strong>VK Видео</strong><small>Выпуски и короткие фрагменты</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
       </nav>
 
       <p class="section-label">Следить за проектом</p>
       <nav class="links" aria-label="Социальные сети">
-        <a class="link placeholder" href="#" data-name="Telegram">
+        <a class="link placeholder" href="#" data-name="Telegram" style="--platform:#42b8ee">
           <span class="icon" aria-hidden="true">TG</span><span><strong>Telegram</strong><small>Анонсы, заметки и обсуждение</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="link placeholder" href="#" data-name="ВКонтакте">
+        <a class="link placeholder" href="#" data-name="ВКонтакте" style="--platform:#5e9fff">
           <span class="icon" aria-hidden="true">VK</span><span><strong>ВКонтакте</strong><small>Клипы и новые материалы</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="link placeholder" href="#" data-name="vc.ru">
+        <a class="link placeholder" href="#" data-name="vc.ru" style="--platform:#ff885b">
           <span class="icon" aria-hidden="true">vc</span><span><strong>vc.ru</strong><small>Статьи по мотивам выпусков</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="link placeholder" href="#" data-name="Instagram" aria-describedby="instagram-legal">
+        <a class="link placeholder" href="#" data-name="Instagram" aria-describedby="instagram-legal" style="--platform:#e975a8">
           <span class="icon" aria-hidden="true">IG</span><span><strong>Instagram*</strong><small>Фото и короткие видео</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
       </nav>
