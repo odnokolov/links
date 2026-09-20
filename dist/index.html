@@ -147,6 +147,13 @@
 
     .links { display: grid; gap: 10px; }
 
+    .legal-note {
+      margin: 13px 4px 0;
+      color: #858078;
+      font-size: .78rem;
+      line-height: 1.45;
+    }
+
     .link {
       min-height: 62px;
       display: grid;
@@ -229,16 +236,13 @@
       <h1 id="page-title">Ваш подкаст</h1>
       <p class="intro">Разговоры с людьми, которые создают технологии, продукты и компании. Слушайте, смотрите и оставайтесь на связи.</p>
 
-      <p class="section-label">Слушать и смотреть</p>
-      <nav class="links" aria-label="Площадки подкаста">
+      <p class="section-label">Смотреть</p>
+      <nav class="links" aria-label="Видеоплощадки подкаста">
         <a class="link placeholder" href="#" data-name="YouTube">
           <span class="icon" aria-hidden="true">YT</span><span><strong>YouTube</strong><small>Полные видеовыпуски</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="link placeholder" href="#" data-name="Яндекс Музыка">
-          <span class="icon" aria-hidden="true">Я</span><span><strong>Яндекс Музыка</strong><small>Слушать все выпуски</small></span><span class="arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="link placeholder" href="#" data-name="Apple Podcasts">
-          <span class="icon" aria-hidden="true">AP</span><span><strong>Apple Podcasts</strong><small>Слушать и подписаться</small></span><span class="arrow" aria-hidden="true">↗</span>
+        <a class="link placeholder" href="#" data-name="VK Видео">
+          <span class="icon" aria-hidden="true">VK</span><span><strong>VK Видео</strong><small>Выпуски и короткие фрагменты</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
       </nav>
 
@@ -250,10 +254,14 @@
         <a class="link placeholder" href="#" data-name="ВКонтакте">
           <span class="icon" aria-hidden="true">VK</span><span><strong>ВКонтакте</strong><small>Клипы и новые материалы</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="link placeholder" href="#" data-name="Дзен">
-          <span class="icon" aria-hidden="true">ДЗ</span><span><strong>Дзен</strong><small>Статьи по мотивам выпусков</small></span><span class="arrow" aria-hidden="true">↗</span>
+        <a class="link placeholder" href="#" data-name="vc.ru">
+          <span class="icon" aria-hidden="true">vc</span><span><strong>vc.ru</strong><small>Статьи по мотивам выпусков</small></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="link placeholder" href="#" data-name="Instagram" aria-describedby="instagram-legal">
+          <span class="icon" aria-hidden="true">IG</span><span><strong>Instagram*</strong><small>Фото и короткие видео</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
       </nav>
+      <p class="legal-note" id="instagram-legal">* Instagram принадлежит компании Meta Platforms Inc., признанной экстремистской организацией; её деятельность запрещена на территории РФ.</p>
     </section>
     <footer>Новые выпуски — регулярно</footer>
   </main>
