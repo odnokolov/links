@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#11100f">
   <meta name="description" content="Илья Одноколов — технологии в деле. Все видео, статьи и социальные сети проекта.">
   <title>Илья Одноколов | Технологии в деле</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
     :root {
       color-scheme: dark;
@@ -252,47 +252,32 @@
 
       <p class="section-label">Смотреть</p>
       <nav class="links" aria-label="Видеоплощадки подкаста">
-        <a class="link placeholder" href="#" data-name="YouTube" style="--platform:#ff5b52">
-          <span class="icon image-icon" aria-hidden="true"><img src="/icon-youtube.png" alt=""></span><span><strong>YouTube</strong><small>Полные видеовыпуски</small></span><span class="arrow" aria-hidden="true">↗</span>
+        <a class="link" href="https://www.youtube.com/channel/UCBYttGIWOsYk2M9QT9qRi2g" target="_blank" rel="noopener noreferrer" style="--platform:#ff5b52">
+          <span class="icon image-icon" aria-hidden="true"><img src="icon-youtube.png" alt=""></span><span><strong>YouTube</strong><small>Полные видеовыпуски</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
         <a class="link" href="https://vkvideo.ru/@club241614947" target="_blank" rel="noopener noreferrer" style="--platform:#5e9fff">
-          <span class="icon image-icon" aria-hidden="true"><img src="/icon-vk-video.png" alt=""></span><span><strong>VK Видео</strong><small>Выпуски и короткие фрагменты</small></span><span class="arrow" aria-hidden="true">↗</span>
+          <span class="icon image-icon" aria-hidden="true"><img src="icon-vk-video.png" alt=""></span><span><strong>VK Видео</strong><small>Выпуски и короткие фрагменты</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
       </nav>
 
       <p class="section-label">Следить за проектом</p>
       <nav class="links" aria-label="Социальные сети">
         <a class="link" href="https://t.me/+FqFYP_3M7oFkMWIy" target="_blank" rel="noopener noreferrer" style="--platform:#42b8ee">
-          <span class="icon image-icon telegram-icon" aria-hidden="true"><img src="/icon-telegram.jpeg" alt=""></span><span><strong>Telegram</strong><small>Анонсы, заметки и обсуждение</small></span><span class="arrow" aria-hidden="true">↗</span>
+          <span class="icon image-icon telegram-icon" aria-hidden="true"><img src="icon-telegram.jpeg" alt=""></span><span><strong>Telegram</strong><small>Анонсы, заметки и обсуждение</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
         <a class="link" href="https://vc.ru/odnokolov" target="_blank" rel="noopener noreferrer" style="--platform:#ff885b">
-          <span class="icon image-icon vc-icon" aria-hidden="true"><img src="/icon-vcru.jpeg" alt=""></span><span><strong>vc.ru</strong><small>Статьи по мотивам выпусков</small></span><span class="arrow" aria-hidden="true">↗</span>
+          <span class="icon image-icon vc-icon" aria-hidden="true"><img src="icon-vcru.jpeg" alt=""></span><span><strong>vc.ru</strong><small>Статьи по мотивам выпусков</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
         <a class="link" href="https://www.instagram.com/ilyaodnokolov" target="_blank" rel="noopener noreferrer" aria-describedby="instagram-legal" style="--platform:#e975a8">
-          <span class="icon image-icon" aria-hidden="true"><img src="/icon-instagram.jpeg" alt=""></span><span><strong>Instagram*</strong><small>Фото и короткие видео</small></span><span class="arrow" aria-hidden="true">↗</span>
+          <span class="icon image-icon" aria-hidden="true"><img src="icon-instagram.jpeg" alt=""></span><span><strong>Instagram*</strong><small>Фото и короткие видео</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
         <a class="link" href="https://set.ki/WhNJoVV" target="_blank" rel="noopener noreferrer" style="--platform:#8a45ff">
-          <span class="icon image-icon" aria-hidden="true"><img src="/icon-setka.jpeg" alt=""></span><span><strong>Сетка</strong><small>Профиль и новые публикации</small></span><span class="arrow" aria-hidden="true">↗</span>
+          <span class="icon image-icon" aria-hidden="true"><img src="icon-setka.jpeg" alt=""></span><span><strong>Сетка</strong><small>Профиль и новые публикации</small></span><span class="arrow" aria-hidden="true">↗</span>
         </a>
       </nav>
       <p class="legal-note" id="instagram-legal">* Instagram принадлежит компании Meta Platforms Inc., признанной экстремистской организацией; её деятельность запрещена на территории РФ.</p>
     </section>
     <footer>Новые выпуски — регулярно</footer>
   </main>
-
-  <div class="notice" role="status" aria-live="polite"></div>
-  <script>
-    const notice = document.querySelector('.notice');
-    let noticeTimer;
-    document.querySelectorAll('.placeholder').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-        clearTimeout(noticeTimer);
-        notice.textContent = `Добавьте ссылку на ${link.dataset.name}`;
-        notice.classList.add('show');
-        noticeTimer = setTimeout(() => notice.classList.remove('show'), 2200);
-      });
-    });
-  </script>
 </body>
 </html>
