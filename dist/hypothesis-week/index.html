@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171c20">
+  <meta name="description" content="Рабочий лист к разговору с Михаилом Корольковым. За пять рабочих дней соберите факты и решите, что делать с идеей дальше.">
+  <title>Как проверить рабочую идею за неделю — Технологии в деле</title>
+  <link rel="canonical" href="https://odnokolov.github.io/links/hypothesis-week/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Как проверить рабочую идею за неделю">
+  <meta property="og:description" content="Интерактивный рабочий лист к выпуску с Михаилом Корольковым. Одна идея, четыре шага и одна проба в вашей работе.">
+  <meta property="og:url" content="https://odnokolov.github.io/links/hypothesis-week/">
+  <meta property="og:image" content="https://odnokolov.github.io/links/hypothesis-week/assets/episode-still.jpg">
+  <meta property="og:image:alt" content="Илья Одноколов и Михаил Корольков во время записи подкаста">
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #171c20;
+      --panel: #22292d;
+      --hero: #1c2226;
+      --input: #171d21;
+      --ink: #f7f9f8;
+      --muted: #b4c0ba;
+      --line: #3d494c;
+      --input-line: #697875;
+      --accent: #d9ffac;
+      --accent-hover: #e7ffcb;
+      --accent-ink: #172219;
+      --wash: #2c362d;
+      --wash-line: #566748;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at 85% 0, #2d373a, var(--page) 40rem);
+      color: var(--ink);
+      font: 1rem/1.55 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .sheet { width: min(100% - 2rem, 61rem); margin-inline: auto; }
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      margin-block: clamp(1rem, 4vw, 3rem) 1.25rem;
+      padding: clamp(1.25rem, 5vw, 3.5rem);
+      border: 1px solid var(--line);
+      border-radius: 1.45rem;
+      background: var(--hero);
+    }
+    .hero-art {
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: 58%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-art img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 82% 45%;
+    }
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgb(28 34 38 / 55%), transparent 48%),
+        linear-gradient(90deg, var(--hero), rgb(28 34 38 / 85%) 22%, transparent 64%);
+    }
+    .hero-copy { max-width: 32rem; }
+    .brand, .day {
+      margin: 0;
+      color: var(--accent);
+      font-size: .875rem;
+      font-weight: 720;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand {
+      display: flex;
+      gap: .65rem;
+      align-items: center;
+    }
+    .brand::before {
+      content: "";
+      width: 1.9rem;
+      height: 3px;
+      background: currentColor;
+    }
+    h1, h2 {
+      font-weight: 770;
+      letter-spacing: -.048em;
+      line-height: 1.07;
+    }
+    h1 { margin: .75rem 0 1rem; font-size: clamp(2.25rem, 6.15vw, 4.15rem); }
+    h1 span { display: block; color: var(--accent); }
+    .byline { margin: 0 0 .8rem; color: var(--muted); }
+    .intro { max-width: 43ch; margin: 0; font-size: 1.075rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; margin-top: 1.4rem; }
+    .start {
+      display: inline-block;
+      border-radius: .72rem;
+      padding: .72rem 1rem;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 740;
+      text-decoration: none;
+    }
+    .start:hover { background: var(--accent-hover); }
+    .secondary {
+      border: 1px solid var(--input-line);
+      border-radius: .65rem;
+      background: var(--hero);
+      color: var(--ink);
+      min-height: 2.75rem;
+      padding: .55rem .8rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .secondary:not(:disabled):hover { border-color: var(--accent); }
+    .secondary:disabled { opacity: .52; cursor: default; }
+    .sample { scroll-margin-top: 1rem; }
+    .sample .detail-body { padding-bottom: 1rem; }
+    .sample strong { color: var(--accent); }
+    .sample small { display: block; color: var(--muted); font-size: .9rem; }
+    .sample-parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; margin: .85rem 0 0; padding: 0; list-style: none; }
+    .sample-parts li { padding: .6rem .7rem; border-left: 2px solid var(--accent); background: var(--hero); border-radius: .25rem; }
+    .sample-parts span { display: block; }
+    .copy-result { margin: 0; color: var(--muted); }
+    .copy-fallback { margin-block: .55rem; }
+    [hidden] { display: none !important; }
+    @media (prefers-reduced-motion: no-preference) {
+      .sample[open] .sample-parts li { animation: reveal-part .36s both; }
+      .sample[open] .sample-parts li:nth-child(2) { animation-delay: .14s; }
+      .sample[open] .sample-parts li:nth-child(3) { animation-delay: .28s; }
+      @keyframes reveal-part { from { opacity: 0; transform: translateY(.35rem); } to { opacity: 1; transform: translateY(0); } }
+    }
+    .days {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .55rem;
+      margin: 0 0 1.2rem;
+      padding: 0;
+      list-style: none;
+    }
+    .days a {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: .12rem;
+      padding: .7rem .85rem;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      background: var(--panel);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .days span { color: var(--muted); font-size: .875rem; font-weight: 500; }
+    .days a:hover, .days a:focus-visible { border-color: var(--wash-line); background: var(--wash); }
+    .step {
+      margin-block: 1.15rem;
+      padding: clamp(1rem, 4vw, 2.3rem);
+      border: 1px solid var(--line);
+      border-radius: 1.15rem;
+      background: var(--panel);
+    }
+    .step:target { border-color: var(--wash-line); }
+    h2 { margin: .45rem 0 .65rem; font-size: clamp(1.75rem, 4.5vw, 2.6rem); text-wrap: balance; }
+    .step > p:not(.day) { max-width: 66ch; margin: 0 0 .85rem; }
+    .questions { margin: 0 0 1.1rem; padding-left: 1.3rem; }
+    .questions li::marker { color: var(--accent); }
+    .toolbox { display: grid; gap: .55rem; margin: .9rem 0 1.2rem; }
+    details { border: 1px solid var(--line); border-radius: .65rem; background: var(--hero); }
+    details[open] { border-color: var(--wash-line); background: var(--wash); }
+    summary { min-height: 2.75rem; padding: .65rem .85rem; border-radius: .65rem; color: var(--accent); cursor: pointer; font-weight: 700; }
+    summary:hover { background: rgb(217 255 172 / 6%); }
+    .detail-body { padding: 0 .85rem .85rem; }
+    .detail-body p { margin: .25rem 0 0; }
+    .detail-body p + p { margin-top: .55rem; }
+    .duration { color: var(--muted); font-weight: 500; white-space: nowrap; }
+    video { display: block; width: min(100%, 36rem); aspect-ratio: 16 / 9; margin: .1rem 0 .65rem; border-radius: .45rem; background: var(--input); }
+    .step > .draft-status { color: var(--muted); font-size: .875rem; }
+    .draft-status[data-state="saved"] { color: var(--accent); }
+    .draft-status[data-state="error"] { color: #ffcf9e; }
+    .fields { display: grid; gap: 1rem; }
+    .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    label, legend { display: block; font-weight: 700; }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 4.9rem;
+      margin-top: .3rem;
+      border: 1px solid var(--input-line);
+      border-radius: .6rem;
+      padding: .65rem .75rem;
+      background: var(--input);
+      color: var(--ink);
+      font: inherit;
+      resize: vertical;
+    }
+    textarea::placeholder { color: var(--muted); opacity: 1; }
+    fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+    .choices { display: flex; flex-wrap: wrap; gap: .45rem 1rem; margin-top: .35rem; }
+    .choices label { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; font-weight: 500; }
+    .choices input { width: 1.12rem; height: 1.12rem; margin: 0; accent-color: var(--accent); }
+    footer { padding: .4rem 0 2.5rem; color: var(--muted); font-size: .875rem; }
+    @media (max-width: 51rem) {
+      .hero-art { opacity: .55; }
+    }
+    @media (max-width: 40rem) {
+      .sheet { width: min(100% - 1.25rem, 61rem); }
+      .hero { border-radius: 1rem; }
+      .hero-art { width: 66%; height: 15rem; opacity: .36; }
+      .hero-art::after {
+        background:
+          linear-gradient(0deg, var(--hero), transparent 70%),
+          linear-gradient(90deg, var(--hero), transparent 70%);
+      }
+      .days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .split, .sample-parts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero sheet">
+    <div class="hero-art" aria-hidden="true">
+      <img src="assets/episode-still.jpg" alt="">
+    </div>
+    <div class="hero-copy">
+      <p class="brand">Технологии в деле</p>
+      <h1>Как проверить рабочую идею <span>за неделю</span></h1>
+      <p class="byline">Из разговора Ильи Одноколова с Михаилом Корольковым</p>
+      <p class="intro">Что вы хотите изменить в своей работе на этой неделе? Запишите идею и выберите один шаг, с которого начнёте проверку.</p>
+      <div class="actions">
+        <a class="start" id="start-check" href="#hypothesis">Проверить свою идею</a>
+        <a id="show-example" href="#example">Посмотреть пример</a>
+        <a href="assets/worksheet.pdf" type="application/pdf">PDF для печати</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="sheet">
+    <nav aria-label="Шаги недели">
+      <ul class="days">
+        <li><a href="#hypothesis"><span>Понедельник</span>Гипотеза</a></li>
+        <li><a href="#conversations"><span>Вторник и среда</span>Разговоры</a></li>
+        <li><a href="#skeptic"><span>Четверг</span>Возражение</a></li>
+        <li><a href="#trial"><span>Пятница</span>Проба</a></li>
+      </ul>
+    </nav>
+
+    <section class="step" id="hypothesis" aria-labelledby="hypothesis-title">
+      <p class="day">Понедельник</p>
+      <h2 id="hypothesis-title">Сформулируйте гипотезу</h2>
+      <p>Запишите, кто попробует ваше решение, какую задачу оно должно улучшить и на сколько. Сразу определите, какой результат заставит вас пересмотреть идею.</p>
+      <div class="toolbox">
+        <details class="sample" id="example">
+          <summary>Как идея становится гипотезой</summary>
+          <div class="detail-body">
+            <p><small>Идея</small>«Давайте стандартизируем отчёт».</p>
+            <p><small>Гипотеза</small>Если аналитик заполнит еженедельный отчёт по единому шаблону, время подготовки с учётом правок сократится с 60 до 30 минут.</p>
+            <ul class="sample-parts">
+              <li><strong>Что меняем</strong><span>Один шаблон для еженедельного отчёта.</span></li>
+              <li><strong>Что измеряем</strong><span>60 → 30 минут с учётом правок.</span></li>
+              <li><strong>Когда пересматриваем</strong><span>Свыше 30 минут или получателю не хватает данных.</span></li>
+            </ul>
+          </div>
+        </details>
+        <details class="clip">
+          <summary>Михаил о гипотезах <span class="duration">· 8 сек.</span></summary>
+          <div class="detail-body">
+            <video controls playsinline preload="none" aria-label="Михаил Корольков о гипотезах">
+              <source src="assets/hypothesis.mp4" type="video/mp4">
+              <track kind="captions" src="assets/hypothesis.vtt" srclang="ru" label="Русские" default>
+            </video>
+            <p>Михаил предлагает мыслить в терминах гипотез и сначала ясно сформулировать своё предположение.</p>
+          </div>
+        </details>
+      </div>
+      <p class="draft-status" id="draft-status" role="status">Автосохранение требует JavaScript.</p>
+      <div class="fields">
+        <div>
+          <label for="hypothesis-text">Моя гипотеза</label>
+          <textarea id="hypothesis-text" name="hypothesis" placeholder="Если [кто] применит [решение] для [задачи], то [показатель] изменится с [сейчас] до [цель]."></textarea>
+        </div>
+        <div class="split">
+          <div>
+            <label for="measurement">Что измерю и с чем сравню</label>
+            <textarea id="measurement" name="measurement"></textarea>
+          </div>
+          <div>
+            <label for="threshold">При каком результате пересмотрю идею</label>
+            <textarea id="threshold" name="threshold"></textarea>
+          </div>
+        </div>
+        <div>
+          <label for="start-action">С чего начну проверку</label>
+          <textarea id="start-action" name="start-action" placeholder="Например, попрошу аналитика показать, как он собирал последний отчёт."></textarea>
+        </div>
+        <div>
+          <button class="secondary" id="copy-plan" type="button" disabled>Скопировать план в заметки</button>
+          <p class="copy-result" id="copy-result" role="status"></p>
+          <textarea class="copy-fallback" id="copy-fallback" aria-label="Текст для ручного копирования" readonly hidden></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="conversations" aria-labelledby="conversations-title">
+      <p class="day">Вторник и среда</p>
+      <h2 id="conversations-title">Проверьте, как задача устроена сейчас</h2>
+      <p>Поговорите с тем, кто выполняет задачу, и с тем, кто уже пробовал похожее решение. Попросите их вспомнить конкретный случай.</p>
+      <ul class="questions">
+        <li>Когда вы делали это в последний раз? На что ушло время?</li>
+        <li>Что пробовали изменить? Что сработало, где застряли?</li>
+        <li>Что нужно, чтобы вы попробовали это в следующий раз?</li>
+      </ul>
+      <div class="toolbox">
+        <details>
+          <summary>Как это выглядит в примере</summary>
+          <div class="detail-body">
+            <p>Аналитик показал последний отчёт: около 40 из 60 минут ушло на сбор цифр. Соседняя команда уже пробовала шаблон: стало меньше правок, но цифры по-прежнему собирали вручную.</p>
+          </div>
+        </details>
+        <details class="clip">
+          <summary>Михаил о разговорах с практиками <span class="duration">· 13 сек.</span></summary>
+          <div class="detail-body">
+            <video controls playsinline preload="none" aria-label="Михаил Корольков о разговорах с практиками">
+              <source src="assets/conversations.mp4" type="video/mp4">
+              <track kind="captions" src="assets/conversations.vtt" srclang="ru" label="Русские" default>
+            </video>
+            <p>Михаил предлагает найти человека, который уже пробовал похожее решение и может поделиться своим опытом.</p>
+          </div>
+        </details>
+      </div>
+      <div class="fields">
+        <div class="split">
+          <div>
+            <label for="current-process">Кто выполняет задачу и что рассказал</label>
+            <textarea id="current-process" name="current-process"></textarea>
+          </div>
+          <div>
+            <label for="prior-attempt">Кто пробовал похожее решение и что сработало</label>
+            <textarea id="prior-attempt" name="prior-attempt"></textarea>
+          </div>
+        </div>
+        <div>
+          <label for="barrier">Что мешает применить решение у нас</label>
+          <textarea id="barrier" name="barrier"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="skeptic" aria-labelledby="skeptic-title">
+      <p class="day">Четверг</p>
+      <h2 id="skeptic-title">Покажите выводы скептику</h2>
+      <p>Попросите коллегу возразить. Какое допущение самое слабое? Есть ли другое объяснение? Что можно проверить одним действием?</p>
+      <div class="toolbox">
+        <details>
+          <summary>Как это выглядит в примере</summary>
+          <div class="detail-body">
+            <p>Коллега спрашивает: «Если 40 минут уходит только на сбор цифр, как шаблон сократит всё время до 30?» Во время пробы отдельно замерим сбор данных, заполнение шаблона и правки.</p>
+          </div>
+        </details>
+        <details class="clip">
+          <summary>Михаил о разговоре со скептиком <span class="duration">· 6 сек.</span></summary>
+          <div class="detail-body">
+            <video controls playsinline preload="none" aria-label="Михаил Корольков о разговоре со скептиком">
+              <source src="assets/skeptic.mp4" type="video/mp4">
+              <track kind="captions" src="assets/skeptic.vtt" srclang="ru" label="Русские" default>
+            </video>
+            <p>Михаил предлагает обсудить идею с человеком, который готов поспорить и проверить ваши аргументы.</p>
+          </div>
+        </details>
+      </div>
+      <div class="fields split">
+        <div>
+          <label for="objection">Какое допущение поставили под сомнение</label>
+          <textarea id="objection" name="objection"></textarea>
+        </div>
+        <div>
+          <label for="first-action">Что проверю одним действием</label>
+          <textarea id="first-action" name="first-action" placeholder="Запишите первое конкретное действие."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="trial" aria-labelledby="trial-title">
+      <p class="day">Пятница</p>
+      <h2 id="trial-title">Проведите одну пробу</h2>
+      <p>Проверьте гипотезу на одной задаче. Сравните результат с критерием, который записали в понедельник, и решите, что будете делать дальше.</p>
+      <div class="toolbox">
+        <details>
+          <summary>Как это выглядит в примере</summary>
+          <div class="detail-body">
+            <p>В пятницу аналитик собрал один отчёт по шаблону. Получателю данных хватило, но с правками ушло 48 минут. Сбор цифр занял 38 минут.</p>
+            <p>Решение: изменить гипотезу. В следующий понедельник проверить, можно ли быстрее выгрузить данные из самого трудоёмкого источника.</p>
+          </div>
+        </details>
+      </div>
+      <div class="fields">
+        <div class="split">
+          <div>
+            <label for="trial-plan">Что, где и когда попробую</label>
+            <textarea id="trial-plan" name="trial-plan"></textarea>
+          </div>
+          <div>
+            <label for="trial-result">Что получилось по сравнению с критерием</label>
+            <textarea id="trial-result" name="trial-result"></textarea>
+          </div>
+        </div>
+        <fieldset>
+          <legend>Решение</legend>
+          <div class="choices">
+            <label><input type="radio" name="decision" value="repeat">Повторю тест</label>
+            <label><input type="radio" name="decision" value="change">Изменю гипотезу</label>
+            <label><input type="radio" name="decision" value="pause">Отложу идею</label>
+          </div>
+        </fieldset>
+        <div>
+          <label for="next-step">Следующий шаг и дата</label>
+          <textarea id="next-step" name="next-step"></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="sheet"><a href="https://t.me/ilyaodnokolov">Илья Одноколов · Технологии в деле</a></footer>
+  <script>
+    const draftPrefix = "technologies-in-action:hypothesis-week:v1:";
+    const worksheetFields = document.querySelectorAll("main textarea[name]");
+    const decisionOptions = document.querySelectorAll('main input[type="radio"][name="decision"]');
+    const draftStatus = document.getElementById("draft-status");
+    const unsavedAnswers = new Set();
+    const startLink = document.getElementById("start-check");
+    const copyPlan = document.getElementById("copy-plan");
+    const copyResult = document.getElementById("copy-result");
+    const fallback = document.getElementById("copy-fallback");
+    const example = document.getElementById("example");
+    const firstStepFields = [...document.querySelectorAll("#hypothesis textarea[name]")];
+    let lastStep = "";
+
+    function updateResumeLink() {
+      const hasAnswers = [...worksheetFields].some(field => field.value.trim()) ||
+        [...decisionOptions].some(option => option.checked);
+      copyPlan.disabled = !firstStepFields.some(field => field.value.trim());
+      startLink.textContent = hasAnswers ? "Продолжить проверку" : "Проверить свою идею";
+      startLink.href = hasAnswers && lastStep ? `#${lastStep}` : "#hypothesis";
+    }
+
+    function rememberStep(step) {
+      lastStep = step;
+      try { localStorage.setItem(draftPrefix + "last-step", step); } catch { /* The draft status reports storage errors. */ }
+      updateResumeLink();
+    }
+
+    document.getElementById("show-example").addEventListener("click", () => {
+      if (example.open) example.open = false;
+      requestAnimationFrame(() => { example.open = true; example.querySelector("summary").focus({ preventScroll: true }); });
+    });
+    if (location.hash === "#example") example.open = true;
+
+    for (const details of document.querySelectorAll("details.clip")) {
+      const player = details.querySelector("video");
+      details.addEventListener("toggle", () => {
+        if (!details.open) player.pause();
+      });
+      player.addEventListener("play", () => {
+        for (const other of document.querySelectorAll("video")) {
+          if (other !== player) other.pause();
+        }
+      });
+    }
+
+    copyPlan.addEventListener("click", async () => {
+      const lines = firstStepFields.filter(field => field.value.trim())
+        .map(field => `${field.labels[0].textContent}\n${field.value.trim()}`);
+      const plan = lines.join("\n\n");
+      fallback.hidden = true;
+      try {
+        await navigator.clipboard.writeText(plan);
+        copyResult.textContent = "План скопирован.";
+      } catch {
+        fallback.value = plan;
+        fallback.hidden = false;
+        fallback.focus();
+        fallback.select();
+        copyResult.textContent = "Скопируйте выделенный текст вручную.";
+      }
+    });
+    const storageError = "Не удалось сохранить черновик в этом браузере. Ответы доступны, пока открыта страница.";
+
+    function showDraftStatus(message, state) {
+      if (draftStatus.textContent !== message) {
+        draftStatus.textContent = message;
+      }
+      draftStatus.dataset.state = state;
+    }
+
+    function saveAnswer(name, value) {
+      try {
+        if (value === "") {
+          localStorage.removeItem(draftPrefix + name);
+        } else {
+          localStorage.setItem(draftPrefix + name, value);
+        }
+        unsavedAnswers.delete(name);
+        if (unsavedAnswers.size === 0) {
+          showDraftStatus("Черновик сохранён в этом браузере.", "saved");
+        }
+      } catch {
+        unsavedAnswers.add(name);
+        showDraftStatus(storageError, "error");
+      }
+    }
+
+    try {
+      let hasDraft = false;
+      const savedStep = localStorage.getItem(draftPrefix + "last-step");
+      if (["hypothesis", "conversations", "skeptic", "trial"].includes(savedStep)) lastStep = savedStep;
+      for (const field of worksheetFields) {
+        const answer = localStorage.getItem(draftPrefix + field.name);
+        if (answer !== null) {
+          field.value = answer;
+          hasDraft = true;
+        }
+      }
+      const decision = localStorage.getItem(draftPrefix + "decision");
+      for (const option of decisionOptions) {
+        if (option.value === decision) {
+          option.checked = true;
+          hasDraft = true;
+        }
+      }
+      if (hasDraft) {
+        showDraftStatus("Черновик восстановлен.", "saved");
+      } else {
+        showDraftStatus("Ответы сохраняются в этом браузере.", "ready");
+      }
+    } catch {
+      showDraftStatus(storageError, "error");
+    }
+
+    updateResumeLink();
+    for (const field of worksheetFields) {
+      field.addEventListener("input", () => {
+        saveAnswer(field.name, field.value);
+        rememberStep(field.closest("section").id);
+      });
+    }
+    for (const option of decisionOptions) {
+      option.addEventListener("change", () => {
+        if (option.checked) {
+          saveAnswer(option.name, option.value);
+          rememberStep(option.closest("section").id);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
